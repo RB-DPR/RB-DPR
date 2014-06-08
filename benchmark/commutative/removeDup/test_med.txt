@@ -1,0 +1,251 @@
+NEWS
+Monday, October 21, 2013
+SYSTEMS RESEARCHERS ENJOY HIGH SUCCESS RATE IN GRANTS
+In light of the current restraints on federal funding, the Systems Research
+Group in the Department of Computer Science scored something of a coup this
+fall.  The group, with five core faculty members, was awarded four National
+Science Foundation (NSF) grants, totaling nearly $1.6 million.   “Our success
+rate was 50 percent, which is pretty remarkable,” said Michael Scott,
+Professor of Computer Science, who is PI or co-PI for two of the awards.
+A major focus of the Systems Research Group is parallel computing, in which
+many calculations are carried out simultaneously. A proliferation of multicore
+processors – ranging from supercomputers to desktops and smart phones,
+incorporating GPUs and other accelerators – has enabled parallel computing on
+an unprecedented scale. But this has also created a host of challenges,
+including uneven energy efficiency, interrupted access and vulnerability to
+malicious attacks.
+The projects funded by the new grants tackle these issues, and have at least a
+peripheral connection to Big Data research, Scott noted, because they involve
+“managing volumes of data that far exceed what we have managed in the past.”
+ For example:
+  Scott and co-PI Kai Shen, Associate Professor of Computer Science, have been
+  awarded a three-year, $455,255 grant to better manage graphics processing
+  units and other accelerator devices, which have become “increasingly
+  ubiquitous in computer systems.” Because these devices are specialized, they
+  can perform certain tasks much more quickly and efficiently than a central
+  processing unit (CPU). But because they are programmable, unmanaged access
+  can open the door to significant unfairness or even malicious attacks. The
+  goal of the grant, Scott says, is to come up with safe, efficient techniques
+  to minimize these problems in standard operating systems, across all vendor
+  products. “A lot of Big Data has to do with pattern matching, with mining
+  for certain kinds of information in very large volumes,” Scott noted. “A lot
+  of that can be accelerated by running it on GPUs or other special hardware.
+  The techniques we are developing will be useful in those kinds of
+  applications.”
+  Sandhya Dwarkadas, Professor of Computer Science, is PI, and Scott is co-PI
+  of a three-year, $449,911 grant aimed at making “big data” computing more
+  readily available for projects involving large sets of irregularly
+  structured data. The goal is to identify a “richer infrastructure” of design
+  patterns than recent software packages offer, especially for applications
+  that use trees and graphs for data representation and access. The project
+  will also develop efficient run-time software to support the new designs.
+  This would enable “advances in scientific computing in general and
+  computational biology in particular,” Dwarkadas notes in the award abstract.
+  “We are particularly excited about the opportunity to use the Blue Gene Q
+  (supercomputer) on this,” Scott added. “It is a good machine for graph
+  computations because it has a lot of cross-sectional bandwidth and low
+  latency for communication.”
+  Dwarkadas is PI and Shen is co-PI of a three-year, $433,673 grant that
+  addresses the energy efficiency and dependability of multicore
+  systems-on-a-chip that have “permeated every segment of the digital market,
+  from servers and supercomputers to desktops and smart phone mobile devices.”
+  “A lot of the issues with power management and protection are ones we used
+  to have in servers, but now are affecting the smaller devices,” Shen said.
+  Multicore processors allow small devices to perform unprecedented tasks. The
+  tradeoff, however, is uneven power usage that can quickly deplete batteries.
+  Part of the challenge with small devices, he added, is that their power
+  usage can fluctuate widely depending on which programs are being used. One
+  goal of this grant is to develop power containers that will “identify and
+  mitigate either malicious or unintentional power anomalies that result in
+  unusually high power consumption, in both high-end servers and multicore and
+  multi-accelerator smart phones,” Dwarkadas and Shen note in the award
+  abstract.
+  Chen Ding, Professor of Computer Science, is PI for a three-year, $253,357
+  grant to adapt Ruby, one of the increasingly popular, easy to use dynamic
+  scripting languages, for parallel computing. “Increasingly, non-computer
+  science people write programs. They want to spend their time doing physics,
+  doing science, doing medicine -- instead of writing code,” Ding noted.  The
+  project will augment Ruby with constructs to enable both parallel and
+  sequential programming. Students will be involved in testing the augmented
+  Ruby, Ding said, so that “we should have a prototype that’s fairly mature,
+  that has a lot of user experience and documentation and will be ready to be
+  used by the community” when released as open source code at the end of three
+  years.  One of Ding’s major goals is to use the augmented Ruby as a “gentle
+  introduction” to parallel programming for students across many disciplines
+  and levels of expertise.
+   Two other NSF grants were received this fall by Computer Science faculty
+   members. Henry Kautz, chair of the department, received a three-year,
+   $481,939 grant to further develop his studies of online tweets as a way to
+   identify, track and analyze disease outbreaks. Daniel Stefankovic,
+   Associate Professor of Computer Science, received a three-year, $399,703
+   grant to identify sampling problems with efficient algorithms.
+    Computer Science faculty members have been lead investigators on a total
+    of 20 NSF grants awarded since July 2010, totaling more than $8.8 million.
+    
+NEWS
+Monday, October 21, 2013
+SYSTEMS RESEARCHERS ENJOY HIGH SUCCESS RATE IN GRANTS
+In light of the current restraints on federal funding, the Systems Research
+Group in the Department of Computer Science scored something of a coup this
+fall.  The group, with five core faculty members, was awarded four National
+Science Foundation (NSF) grants, totaling nearly $1.6 million.   “Our success
+rate was 50 percent, which is pretty remarkable,” said Michael Scott,
+Professor of Computer Science, who is PI or co-PI for two of the awards.
+A major focus of the Systems Research Group is parallel computing, in which
+many calculations are carried out simultaneously. A proliferation of multicore
+processors – ranging from supercomputers to desktops and smart phones,
+incorporating GPUs and other accelerators – has enabled parallel computing on
+an unprecedented scale. But this has also created a host of challenges,
+including uneven energy efficiency, interrupted access and vulnerability to
+malicious attacks.
+The projects funded by the new grants tackle these issues, and have at least a
+peripheral connection to Big Data research, Scott noted, because they involve
+“managing volumes of data that far exceed what we have managed in the past.”
+ For example:
+  Scott and co-PI Kai Shen, Associate Professor of Computer Science, have been
+  awarded a three-year, $455,255 grant to better manage graphics processing
+  units and other accelerator devices, which have become “increasingly
+  ubiquitous in computer systems.” Because these devices are specialized, they
+  can perform certain tasks much more quickly and efficiently than a central
+  processing unit (CPU). But because they are programmable, unmanaged access
+  can open the door to significant unfairness or even malicious attacks. The
+  goal of the grant, Scott says, is to come up with safe, efficient techniques
+  to minimize these problems in standard operating systems, across all vendor
+  products. “A lot of Big Data has to do with pattern matching, with mining
+  for certain kinds of information in very large volumes,” Scott noted. “A lot
+  of that can be accelerated by running it on GPUs or other special hardware.
+  The techniques we are developing will be useful in those kinds of
+  applications.”
+  Sandhya Dwarkadas, Professor of Computer Science, is PI, and Scott is co-PI
+  of a three-year, $449,911 grant aimed at making “big data” computing more
+  readily available for projects involving large sets of irregularly
+  structured data. The goal is to identify a “richer infrastructure” of design
+  patterns than recent software packages offer, especially for applications
+  that use trees and graphs for data representation and access. The project
+  will also develop efficient run-time software to support the new designs.
+  This would enable “advances in scientific computing in general and
+  computational biology in particular,” Dwarkadas notes in the award abstract.
+  “We are particularly excited about the opportunity to use the Blue Gene Q
+  (supercomputer) on this,” Scott added. “It is a good machine for graph
+  computations because it has a lot of cross-sectional bandwidth and low
+  latency for communication.”
+  Dwarkadas is PI and Shen is co-PI of a three-year, $433,673 grant that
+  addresses the energy efficiency and dependability of multicore
+  systems-on-a-chip that have “permeated every segment of the digital market,
+  from servers and supercomputers to desktops and smart phone mobile devices.”
+  “A lot of the issues with power management and protection are ones we used
+  to have in servers, but now are affecting the smaller devices,” Shen said.
+  Multicore processors allow small devices to perform unprecedented tasks. The
+  tradeoff, however, is uneven power usage that can quickly deplete batteries.
+  Part of the challenge with small devices, he added, is that their power
+  usage can fluctuate widely depending on which programs are being used. One
+  goal of this grant is to develop power containers that will “identify and
+  mitigate either malicious or unintentional power anomalies that result in
+  unusually high power consumption, in both high-end servers and multicore and
+  multi-accelerator smart phones,” Dwarkadas and Shen note in the award
+  abstract.
+  Chen Ding, Professor of Computer Science, is PI for a three-year, $253,357
+  grant to adapt Ruby, one of the increasingly popular, easy to use dynamic
+  scripting languages, for parallel computing. “Increasingly, non-computer
+  science people write programs. They want to spend their time doing physics,
+  doing science, doing medicine -- instead of writing code,” Ding noted.  The
+  project will augment Ruby with constructs to enable both parallel and
+  sequential programming. Students will be involved in testing the augmented
+  Ruby, Ding said, so that “we should have a prototype that’s fairly mature,
+  that has a lot of user experience and documentation and will be ready to be
+  used by the community” when released as open source code at the end of three
+  years.  One of Ding’s major goals is to use the augmented Ruby as a “gentle
+  introduction” to parallel programming for students across many disciplines
+  and levels of expertise.
+   Two other NSF grants were received this fall by Computer Science faculty
+   members. Henry Kautz, chair of the department, received a three-year,
+   $481,939 grant to further develop his studies of online tweets as a way to
+   identify, track and analyze disease outbreaks. Daniel Stefankovic,
+   Associate Professor of Computer Science, received a three-year, $399,703
+   grant to identify sampling problems with efficient algorithms.
+    Computer Science faculty members have been lead investigators on a total
+    of 20 NSF grants awarded since July 2010, totaling more than $8.8 million.
+
+NEWS
+Monday, October 21, 2013
+SYSTEMS RESEARCHERS ENJOY HIGH SUCCESS RATE IN GRANTS
+In light of the current restraints on federal funding, the Systems Research
+Group in the Department of Computer Science scored something of a coup this
+fall.  The group, with five core faculty members, was awarded four National
+Science Foundation (NSF) grants, totaling nearly $1.6 million.   “Our success
+rate was 50 percent, which is pretty remarkable,” said Michael Scott,
+Professor of Computer Science, who is PI or co-PI for two of the awards.
+A major focus of the Systems Research Group is parallel computing, in which
+many calculations are carried out simultaneously. A proliferation of multicore
+processors – ranging from supercomputers to desktops and smart phones,
+incorporating GPUs and other accelerators – has enabled parallel computing on
+an unprecedented scale. But this has also created a host of challenges,
+including uneven energy efficiency, interrupted access and vulnerability to
+malicious attacks.
+The projects funded by the new grants tackle these issues, and have at least a
+peripheral connection to Big Data research, Scott noted, because they involve
+“managing volumes of data that far exceed what we have managed in the past.”
+ For example:
+  Scott and co-PI Kai Shen, Associate Professor of Computer Science, have been
+  awarded a three-year, $455,255 grant to better manage graphics processing
+  units and other accelerator devices, which have become “increasingly
+  ubiquitous in computer systems.” Because these devices are specialized, they
+  can perform certain tasks much more quickly and efficiently than a central
+  processing unit (CPU). But because they are programmable, unmanaged access
+  can open the door to significant unfairness or even malicious attacks. The
+  goal of the grant, Scott says, is to come up with safe, efficient techniques
+  to minimize these problems in standard operating systems, across all vendor
+  products. “A lot of Big Data has to do with pattern matching, with mining
+  for certain kinds of information in very large volumes,” Scott noted. “A lot
+  of that can be accelerated by running it on GPUs or other special hardware.
+  The techniques we are developing will be useful in those kinds of
+  applications.”
+  Sandhya Dwarkadas, Professor of Computer Science, is PI, and Scott is co-PI
+  of a three-year, $449,911 grant aimed at making “big data” computing more
+  readily available for projects involving large sets of irregularly
+  structured data. The goal is to identify a “richer infrastructure” of design
+  patterns than recent software packages offer, especially for applications
+  that use trees and graphs for data representation and access. The project
+  will also develop efficient run-time software to support the new designs.
+  This would enable “advances in scientific computing in general and
+  computational biology in particular,” Dwarkadas notes in the award abstract.
+  “We are particularly excited about the opportunity to use the Blue Gene Q
+  (supercomputer) on this,” Scott added. “It is a good machine for graph
+  computations because it has a lot of cross-sectional bandwidth and low
+  latency for communication.”
+  Dwarkadas is PI and Shen is co-PI of a three-year, $433,673 grant that
+  addresses the energy efficiency and dependability of multicore
+  systems-on-a-chip that have “permeated every segment of the digital market,
+  from servers and supercomputers to desktops and smart phone mobile devices.”
+  “A lot of the issues with power management and protection are ones we used
+  to have in servers, but now are affecting the smaller devices,” Shen said.
+  Multicore processors allow small devices to perform unprecedented tasks. The
+  tradeoff, however, is uneven power usage that can quickly deplete batteries.
+  Part of the challenge with small devices, he added, is that their power
+  usage can fluctuate widely depending on which programs are being used. One
+  goal of this grant is to develop power containers that will “identify and
+  mitigate either malicious or unintentional power anomalies that result in
+  unusually high power consumption, in both high-end servers and multicore and
+  multi-accelerator smart phones,” Dwarkadas and Shen note in the award
+  abstract.
+  Chen Ding, Professor of Computer Science, is PI for a three-year, $253,357
+  grant to adapt Ruby, one of the increasingly popular, easy to use dynamic
+  scripting languages, for parallel computing. “Increasingly, non-computer
+  science people write programs. They want to spend their time doing physics,
+  doing science, doing medicine -- instead of writing code,” Ding noted.  The
+  project will augment Ruby with constructs to enable both parallel and
+  sequential programming. Students will be involved in testing the augmented
+  Ruby, Ding said, so that “we should have a prototype that’s fairly mature,
+  that has a lot of user experience and documentation and will be ready to be
+  used by the community” when released as open source code at the end of three
+  years.  One of Ding’s major goals is to use the augmented Ruby as a “gentle
+  introduction” to parallel programming for students across many disciplines
+  and levels of expertise.
+   Two other NSF grants were received this fall by Computer Science faculty
+   members. Henry Kautz, chair of the department, received a three-year,
+   $481,939 grant to further develop his studies of online tweets as a way to
+   identify, track and analyze disease outbreaks. Daniel Stefankovic,
+   Associate Professor of Computer Science, received a three-year, $399,703
+   grant to identify sampling problems with efficient algorithms.
+    Computer Science faculty members have been lead investigators on a total
+    of 20 NSF grants awarded since July 2010, totaling more than $8.8 million.

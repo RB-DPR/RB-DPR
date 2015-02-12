@@ -128,12 +128,10 @@ class Swaptions < Benchmark
             (0...s.iFactors).each{|k|
                 (0...s.iN-1).each{|j|
                     s.ppdFactors[k][j] = factors[k][j]
-                    #puts s.ppdFactors[k][j]
                 }
             }
         }
         
-#        puts "-------------------"
     end
     
     def start
@@ -170,14 +168,11 @@ class Swaptions < Benchmark
 
         hJMPath = Array.new
         iN.times{hJMPath.push(Array.new(iN, 0.0))}
-        #hJMPath = Array.new(iN, Array.new(iN, 0.0))
         ppdHJMPath = Array.new
         iN.times{ppdHJMPath.push(Array.new(iN*bs, 0.0))}
-        #ppdHJMPath = Array.new(iN, Array.new(iN*bs, 0.0))
         pdForward = Array.new(iN, 0.0)
         ppdDrifts = Array.new
         iFactors.times{ppdDrifts.push(Array.new(iN-1, 0.0))}
-        #ppdDrifts = Array.new(iFactors, Array.new(iN-1, 0.0))
         pdTotalDrift = Array.new(iN - 1, 0.0)
   
         pdPayoffDiscountFactors = Array.new(iN * bs, 0.0)
@@ -242,9 +237,6 @@ class Swaptions < Benchmark
                 dSumSimSwaptionPrice += dDiscSwaptionPayoff
                 dSumSquareSimSwaptionPrice += dDiscSwaptionPayoff * dDiscSwaptionPayoff
            }
-           
-           #puts dSumSimSwaptionPrice
-           
            l += bs
         end
         
@@ -255,7 +247,6 @@ class Swaptions < Benchmark
 		
         pdSwaptionPrice[0] = dSimSwaptionMeanPrice
         pdSwaptionPrice[1] = dSimSwaptionStdError
-        #puts pdSwaptionPrice
         iSuccess = 1
         return iSuccess
     end
@@ -275,8 +266,6 @@ class Swaptions < Benchmark
         
         (0...iFactors).each { |i|
             ppdDrifts[i][0] = Float(0.5 * ddelt * (ppdFactors[i][0])*(ppdFactors[i][0]))
-            #puts   (ppdDrifts[i][0]).class
-             #print ppdDrifts[i][0],",", i, ",0\n"
         }
         
           
@@ -293,29 +282,16 @@ class Swaptions < Benchmark
 			        dSumVol += ppdFactors[i][l]
 			    }
 			    ppdDrifts[i][j] += 0.5*ddelt*(dSumVol)*(dSumVol)
-			    
-			    #print  ppdDrifts[i][j], ",", i, ",", j, "\n"
-			    
 		    }
 		}
 		
-=begin
-		(0...3).each{|i|
-		    (0...10).each{|j|
-		        print i,",", j, "=", ppdDrifts[i][j], "\n"
-		    }
-		}
-=end		
-		#puts"---------------------------"
 		(0..iN-2).each {|i|
 		    pdTotalDrift[i]=0
 		    (0...iFactors).each {|j|
 		        pdTotalDrift[i]+= ppdDrifts[j][i]
-		        #print pdTotalDrift[i], ",[",j,",",i,"]=", ppdDrifts[j][i], "\n"
 		    }
 		}
 		
-		#puts"---------------------------"
 	    return 1
     end
     
@@ -324,10 +300,8 @@ class Swaptions < Benchmark
 	    sqrt_ddelt = Math.sqrt(ddelt)
 	    pdZ = Array.new
 	    iFactors.times{pdZ.push(Array.new(iN * bs, 0.0))}
-	    #pdZ = Array.new(iFactors, Array.new(iN * bs, 0.0))
 	    randZ = Array.new
 	    iFactors.times{randZ.push(Array.new(iN * bs, 0.0))}
-	    #randZ = Array.new(iFactors, Array.new(iN * bs, 0.0))
 	    
 	    (0...bs).each{|b|
 	        (0...iN).each{|j|
@@ -384,12 +358,7 @@ class Swaptions < Benchmark
         }
     end
 end
-#RACE::Detector.config(8, 0, 3, 4)
-#RACE::Detector.start
-#RACE::Profiler.enable
 
-#GC::Profiler.enable
-#paras:thread num, number of swaptions, number of simulations
 #test input
 #bench = Swaptions.new(1, 1, 5)
 #simsmall input
@@ -397,14 +366,5 @@ bench = Swaptions.new(1, 16, 5000)
 #simlarge input
 #bench = Swaptions.new(1, 64, 20000)
 bench.run
-
-#RACE::Profiler.disable
-#RACE::Detector.stop
-#RACE::Profiler.report
-
-
-#puts GC::Profiler.total_time
-#puts GC::Profiler.result
-#GC::Profiler.disable
 
 

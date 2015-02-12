@@ -38,21 +38,6 @@ class OptionData
     end
 end
 
-=begin
-typedef struct OptionData_ {
-        fptype s;          // spot price
-        fptype strike;     // strike price
-        fptype r;          // risk-free interest rate
-        fptype divq;       // dividend rate
-        fptype v;          // volatility
-        fptype t;          // time to maturity or option expiration in years 
-                           //     (1yr = 1.0, 6mos = 0.5, 3mos = 0.25, ..., etc)  
-        char OptionType;   // Option type.  "P"=PUT, "C"=CALL
-        fptype divs;       // dividend vals (not used in this test)
-        fptype DGrefval;   // DerivaGem Reference Value
-} OptionData;
-=end
-
 class Blackscholes < Benchmark
     attr_accessor :OptionData       #OptionData *data;
     attr_accessor :prices           #fptype *prices;
@@ -71,8 +56,7 @@ class Blackscholes < Benchmark
     attr_accessor :inputFile
     attr_accessor :outputFile
     
-    #attr_accessor :mutex
-       
+      
     def initialize(thread_num, check, input, output)
         super("Blackscholes", thread_num, check)
         
@@ -90,7 +74,7 @@ class Blackscholes < Benchmark
         @NUM_RUNS = 100
         @inputFile = input
         @outputFile = output
-        #@mutex = Mutex.new
+
     end
     
     def cndf( inputX )
@@ -170,12 +154,10 @@ class Blackscholes < Benchmark
 
         d1 = xD1
         d2 = xD2
-        #print "d1=", d1 , " "
-        #print "d2=", d2, "\n"
+
         nofXd1 = cndf( d1 )
         nofXd2 = cndf( d2 )
-        #print "nofXd1=", nofXd2 , " "
-        #print "nofXd1=", nofXd2, "\n"
+
         futureValueX = strike * ( Math.exp( -(rate)*(time) ) )        
         if otype == false            
             optionPrice = (sptprice * nofXd1) - (futureValueX * nofXd2)
@@ -203,10 +185,10 @@ class Blackscholes < Benchmark
                     end
                 end
             }
-            #print "run ", j, "\n"
+
         }
 
-        return 0           #return 0
+        return 0       
     end
     
     
@@ -219,7 +201,7 @@ class Blackscholes < Benchmark
             puts "ERROR: unable to open file", @inputFile, ".\n"
             return
         end
-        #outFile = File.open(outputFile, "w")
+
         line = inFile.gets
         if line.size == 0
             puts "ERROR: unable to read from file +", @inputFile, ".\n"
@@ -276,8 +258,7 @@ class Blackscholes < Benchmark
     end
 end
 
-#RACE::Detector.start
-#GC::Profiler.enable
+
 #bench = Blackscholes.new(1, true, "in_4.txt", "out_4.txt")
 #1 thread
 bench = Blackscholes.new(1, true, "in_64K.txt", "out_64K.txt")
@@ -285,7 +266,5 @@ bench = Blackscholes.new(1, true, "in_64K.txt", "out_64K.txt")
 #bench = Blackscholes.new(1, true, "in_4K.txt", "out_4K.txt")
 bench.run
 exit
-#puts GC::Profiler.result
-#puts GC::stat
-#GC::Profiler.disable
+
 

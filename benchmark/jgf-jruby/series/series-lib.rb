@@ -7,7 +7,6 @@
 # Reference Source 1: Java Grande Forum Benchmark Suite - Thread Version 1.0
 
 require "../../parsec-jruby/common/BenchHarness"
-#require 'rdoc/rdoc'
 require 'detpar'
 
 puts "threads?"
@@ -89,7 +88,6 @@ class Series < Benchmark
     end
     def init
         @array_rows = @datasizes[@size]
-        #TestArray = new double [2][array_rows];
         @TestArray = [Array.new(@array_rows), Array.new(@array_rows)]
     end
     
@@ -105,22 +103,7 @@ class Series < Benchmark
             @TestArray[0][i] = TrapezoidIntegrate(0.0, 2.0, 1000, omega * i, 1)
             @TestArray[1][i] = TrapezoidIntegrate(0.0, 2.0, 1000, omega * i, 2)
         }
-	#puts "sleep"
-        #sleep
 	
-=begin
-        for i in ilow...iupper
-            @TestArray[0][i] = TrapezoidIntegrate(0.0, 2.0, 1000, omega * i, 1)
-            @TestArray[1][i] = TrapezoidIntegrate(0.0, 2.0, 1000, omega * i, 2)
-        end
-=end        
-=begin
-        for i in ilow...(ilow+10)
-            puts @TestArray[0][i]
-            puts @TestArray[1][i]
-        end
-=end
-        
         #validation
         for i in 0...4 
             for j in 0...2 
@@ -135,10 +118,8 @@ class Series < Benchmark
     end
 end
 
-#RACE::Detector.start
 #simall size(A in jgf)
 bench = Series.new(1, 0)
-
 bench.run
 
 exit

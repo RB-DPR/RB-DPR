@@ -267,7 +267,6 @@ class Crypt < Benchmark
         
         for i in 0...8
             @userkey[i] = rndnum.rand(65536)
-            #@userkey[i] = i
         end
         
         calcEncryptKey()
@@ -287,18 +286,9 @@ class Crypt < Benchmark
     
     def start
         IDEARunner(@plain1,@crypt1,@Z)
-#        for i in 0...10
-#            puts @plain1[i]
-#        end
-#        exit
         IDEARunner(@crypt1,@plain2,@DK);
-#        for i in 0...10
-#            puts @plain2[i]
-#        end
-
 begin        
         for i in 0...@plain1.length
-            #puts "#{@plain1[i]},  #{@plain2[i]}"
             if @plain1[i] != @plain2[i] then
                 puts "Validation failed"
                 puts "#{@plain1[i]},  #{@plain2[i]}"
@@ -309,7 +299,7 @@ end
     end
 end    
 
-#simall size(A in jgf)
+#small size(A in jgf)
 bench = Crypt.new(1, 0)
 
 bench.run

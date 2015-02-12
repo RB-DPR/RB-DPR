@@ -41,7 +41,6 @@ class Sparse < Benchmark
         a = Array.new(size)
         for i in 0...size
             a[i] = r.rand() * 1e-6
-            #a[i] = i * 1e-6
         end
         a        
     end
@@ -63,11 +62,6 @@ class Sparse < Benchmark
             @row[i] = @R.rand(@datasizes_M[@size])
             @col[i] = @R.rand(@datasizes_M[@size])
             @val[i] = @R.rand()    
-            
-            #@row[i] = i % (@datasizes_M[@size])
-            #@col[i] = i % (@datasizes_M[@size])
-            #@val[i] = 1    
-            
             @rowarray[@row[i]].push(i)
         end
     end
@@ -81,15 +75,6 @@ class Sparse < Benchmark
                     @y[i] += @x[@col[index]] * @val[index]                
                 end
             end
-=begin
-           #for i in 0...@datasizes_M[@size]
-                for j in 0...@datasizes_nz[@size]
-                    #if @row[j] == i then
-                        @y[@row[j]] += @x[@col[j]] * @val[j]
-                    #end
-                end
-           #end             
-=end
         end
         
         nz = @val.length

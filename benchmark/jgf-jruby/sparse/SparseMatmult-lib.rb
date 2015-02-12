@@ -41,7 +41,6 @@ class Sparse < Benchmark
         @RANDOM_SEED = 10101010
         @SPARSE_NUM_ITER = 200
         @SPARSE_NUM_ITER = 50
-        #@R = Random.new(@RANDOM_SEED)
         @ytotal = 0.0
     end
     
@@ -69,48 +68,29 @@ class Sparse < Benchmark
         end
         
         for i in 0...@datasizes_nz[@size]
-            #@row[i] = @R.rand(@datasizes_M[@size])
             @row[i] = rand(@datasizes_M[@size])
-            #@col[i] = @R.rand(@datasizes_M[@size])
             @col[i] = rand(@datasizes_M[@size])
-            #@val[i] = @R.rand() 
             @val[i] = rand()   
-            
-            #@row[i] = i % (@datasizes_M[@size])
-            #@col[i] = i % (@datasizes_M[@size])
-            #@val[i] = 1    
-            
             @rowarray[@row[i]].push(i)
         end
+=begin
         @x.markReadOnly
         @val.markReadOnly
         @col.markReadOnly
         @rowarray.markReadOnly
         self.markReadOnly
+=end
     end
     
     def start
         for reps in 0...@SPARSE_NUM_ITER
-            #for i in 0...@datasizes_M[@size]
             (0...@datasizes_M[@size]).all{|i|
                 currrow = @rowarray[i]
-                #puts currrow.length
                 for j in 0...currrow.length
                     index = currrow[j]
                     @y[i] += @x[@col[index]] * @val[index]      
                 end
             }
-            #end
-=begin
-           #for i in 0...@datasizes_M[@size]
-                for j in 0...@datasizes_nz[@size]
-                    #if @row[j] == i then
-                        @y[@row[j]] += @x[@col[j]] * @val[j]
-                    #end
-                end
-           #end             
-=end
-            #puts reps
         end
         
         return
@@ -131,7 +111,6 @@ class Sparse < Benchmark
     end
 end
 
-#RACE::Detector.start
 #simall size(A in jgf)
 bench = Sparse.new(1, 0)
 

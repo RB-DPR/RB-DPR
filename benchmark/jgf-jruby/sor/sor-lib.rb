@@ -7,7 +7,6 @@
 # Reference Source 1: Java Grande Forum Benchmark Suite - Thread Version 1.0
 
 require "../../parsec-jruby/common/BenchHarness"
-#require 'rdoc/rdoc'
 
 require 'detpar'
 
@@ -27,10 +26,6 @@ class SOR < Benchmark
     attr_accessor :R
     attr_accessor :refval
        
-#   private int datasizes[]={1000,1500,2000};
-#  private static final int JACOBI_NUM_ITER = 100;
-#  private static final long RANDOM_SEED = 10101010;   
- 
     def initialize(thread_num, size)
         super("SOR", thread_num, false)
         @Gtotal = 0.0
@@ -38,7 +33,6 @@ class SOR < Benchmark
         @datasizes = [1000,1500,2000]
         @JACOBI_NUM_ITER = 100
         @RADOM_SEED = 10101010
-        #@R = Random.new(@RADOM_SEED)
         @refval = [0.498574406322512,1.1234778980135105,1.9954895063582696]
         puts "after initialize"
     end
@@ -54,7 +48,6 @@ class SOR < Benchmark
         for i in 0...@G.length
             for j in 0...@G[i].length
                 @G[i][j] = rand(1000000) * 1e-6
-                #@G[i][j] = 0.1 * 1e-6
             end
         end
     end
@@ -77,19 +70,9 @@ class SOR < Benchmark
         ilow = 1
         iupper = m;
 
-=begin        
-        (0...4).each {|i|
-            next if i % 2 == 0
-            puts i
-        }
-=end
-
         for p in 0...(2*@JACOBI_NUM_ITER)
-            #i = ilow + (p % 2)
-            #while i < iupper do
             ((ilow+(p%2))...iupper).all{|i|
                 next if p%2 == i%2
-                #puts "p=#{p}, i=#{i}"
                 gi = @G[i]
                 gim1 = @G[i - 1]
                 
@@ -102,13 +85,6 @@ class SOR < Benchmark
                         j += 2
                     end
 
-=begin                    
-                    (1...nm1).all{|j|
-                        next if j % 2 == 0
-                        gi[j] = omega_over_four * (gim1[j] + gip1[j] + gi[j - 1] + gi[j + 1]) + one_minus_omega * gi[j]
-                    }
-=end
-                    
                 elsif i == mm1 then
                     gim2 = @G[i - 2]
                     j = 1
@@ -134,17 +110,9 @@ class SOR < Benchmark
                         j += 2   
                     end
                 end
-            #    i += 2
             }
         end
         
-=begin        
-        for i in 0...2
-            for j in 0...10
-                puts @G[i][j]
-            end
-        end
-=end        
         for i in 1...nm1 
             for j in 1...nm1
                 @Gtotal += @G[i][j]
@@ -158,7 +126,7 @@ class SOR < Benchmark
         end
     end
 end
-#RACE::Detector.start
+
 #simall size(A in jgf)
 bench = SOR.new(1, 0)
 

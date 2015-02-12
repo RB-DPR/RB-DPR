@@ -7,7 +7,6 @@
 # Reference Source 1: Java Grande Forum Benchmark Suite - Thread Version 1.0
 
 require "../../parsec-jruby/common/BenchHarness"
-#require 'rdoc/rdoc'
 require 'detpar'
 
 puts "Num of threads?"
@@ -124,10 +123,6 @@ class Crypt < Benchmark
             i2 += 1
             text2[i2] =  javaint2byte(x4 >> 8)
             i2 += 1
-            
-        #    i += 1                       
-        #end
-        #puts l.to_s if l % 10000 == 0
         }
     end
     
@@ -265,15 +260,12 @@ class Crypt < Benchmark
         @crypt1 = Array.new(@array_rows)
         @plain2 = Array.new(@array_rows)
         
-        #rndnum = Random.new(136506717)
         @userkey = Array.new(8)
         @Z = Array.new(52)
         @DK = Array.new(52)
         
         for i in 0...8
-            #@userkey[i] = rndnum.rand(65536)
             @userkey[i] = rand(65536)
-            #@userkey[i] = i
         end
         
         calcEncryptKey()
@@ -294,32 +286,19 @@ class Crypt < Benchmark
     def start
         
         IDEARunner(@plain1,@crypt1,@Z)
-#        for i in 0...10
-#            puts @plain1[i]
-#        end
-#        exit
         IDEARunner(@crypt1,@plain2,@DK);
-#        for i in 0...10
-#            puts @plain2[i]
-#        end
-        #sleep
 begin        
         for i in 0...@plain1.length
-            #puts "#{@plain1[i]},  #{@plain2[i]}"
             if @plain1[i] != @plain2[i] then
                 puts "Validation failed"
                 puts "#{@plain1[i]},  #{@plain2[i]}"
-               # exit
             end
         end
 end
     end
 end    
 
-#RACE::Detector.start
 #simall size(A in jgf)
 bench = Crypt.new(1, 0)
-
 bench.run
-
 exit

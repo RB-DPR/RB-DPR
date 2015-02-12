@@ -18,10 +18,6 @@ class SOR < Benchmark
     attr_accessor :RANDOM_SEED
     attr_accessor :R
     attr_accessor :refval
-       
-#   private int datasizes[]={1000,1500,2000};
-#  private static final int JACOBI_NUM_ITER = 100;
-#  private static final long RANDOM_SEED = 10101010;   
  
     def initialize(thread_num, size)
         super("SOR", thread_num, false)
@@ -45,7 +41,6 @@ class SOR < Benchmark
         for i in 0...@G.length
             for j in 0...@G[i].length
                 @G[i][j] = @R.rand() * 1e-6
-                #@G[i][j] = 0.1 * 1e-6
             end
         end
     end
@@ -67,17 +62,9 @@ class SOR < Benchmark
         ilow = 1
         iupper = m;
 
-=begin        
-        (0...4).each {|i|
-            next if i % 2 == 0
-            puts i
-        }
-=end
-
         for p in 0...(2*@JACOBI_NUM_ITER)
             i = ilow + (p % 2)
             while i < iupper do
-                #puts "p=#{p}, i=#{i}"
                 gi = @G[i]
                 gim1 = @G[i - 1]
                 
@@ -119,13 +106,6 @@ class SOR < Benchmark
             end
         end
         
-=begin        
-        for i in 0...2
-            for j in 0...10
-                puts @G[i][j]
-            end
-        end
-=end        
         for i in 1...nm1 
             for j in 1...nm1
                 @Gtotal += @G[i][j]

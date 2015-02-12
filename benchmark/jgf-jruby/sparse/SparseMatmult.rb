@@ -85,6 +85,8 @@ class Sparse < Benchmark
         for i in 0...10 
             puts @y[i]
         end
+		
+		#Validation may fail due to random number generation and floating-point calculation
         refval = [75.02484945753453,150.0130719633895,749.5245870753752]
         dev = (@ytotal - refval[@size]).abs
         if dev > 1.0e-10 then

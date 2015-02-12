@@ -57,20 +57,14 @@ class SimStream < PStream
         count = 0
         (0...chunkSize).each {|i|
             break if pos >= n
-            # puts i.to_s
             points.p[i].weight = 1.0
             points.p[i].coord = Array.new
             (0...dim).each { |j|
-                #points.p[i].coord.push(Float(Float(@r.rand(0...65536)) / Float(65536)) )
                 points.p[i].coord.push(Float((i * (j+1) * 1.0) / (@n * @dim))) 
-                #puts points.p[i].coord
             }
-            #@n -= 1
             count += 1
         }
         @pos += count
-        #puts "pos = "+@pos.to_s
-        #puts "n = "+@n.to_s
         return count
     end
     def getAndMove
@@ -80,7 +74,6 @@ class SimStream < PStream
         points.num = numRead
         return points
       else
-        # puts "return nil"
         return nil
       end
     end
@@ -90,7 +83,6 @@ class SimStream < PStream
     end
     def feof
         if @pos >= @n
-            # puts "eof!"
             return true
         else
             return false
@@ -236,7 +228,6 @@ class Streamcluster < Benchmark
         #r = Random.new
         
         #/* create center at first point, send it to itself */
-        #(0...points.num).each {|i|
         (0...points.num).all {|i|
             distance = dist(points.p[i], points.p[0], points.dim)
             points.p[i].cost = distance * points.p[i].weight
@@ -244,13 +235,10 @@ class Streamcluster < Benchmark
         }
 
         @numcenters = 1
-        # r = Reduction.new(Reduction::ADD)
         (0...points.num).each {|i|
-            #to_open = (Float(r.rand(0...65536)) / Float(65536)) < (points.p[i].cost / z)
             to_open = i * 1.0 / points.num < (points.p[i].cost / z)
             if to_open
                 @numcenters += 1
-                # r.push(1)
                 open = true
                 (0...points.num).all {|j|
                     distance = dist(points.p[i], points.p[j], points.dim)
@@ -262,12 +250,9 @@ class Streamcluster < Benchmark
                 open = false
             end
         }
-        # @numcenters += r.get
-        
         open = false;
         
         costs = z * @numcenters
-        #(0...points.num).each {|i|
         total_cost = Reduction.new(Reduction::ADD)
         (0...points.num).all {|i|
             total_cost.push(points.p[i].cost)
@@ -288,7 +273,6 @@ class Streamcluster < Benchmark
         i = 0
         number_of_centers_to_close = 0
 
-        #work_mem = Array.new
         gl_cost_of_opening_x = 0.0
         gl_number_of_centers_to_close = 0.0
 
@@ -321,7 +305,6 @@ class Streamcluster < Benchmark
             }
         end
 
-        #(k1...k2).each{|i|
         (k1...k2).each{|i|
             @center_table[i] += Integer(work_mem[pid*stride]) if  @is_center[i] 
             @switch_membership[i] = false
@@ -365,18 +348,15 @@ class Streamcluster < Benchmark
         work_mem[pid*stride + myK] = number_of_centers_to_close
         work_mem[pid*stride + myK+1] = cost_of_opening_x
 
-        #if pid==0 
         gl_cost_of_opening_x = z
 
         (0...@cfg_tnum).each{|p|
             gl_number_of_centers_to_close += Integer(work_mem[p*stride + myK])
             gl_cost_of_opening_x += work_mem[p*stride+myK+1]
         }
-        #end
         
         if  gl_cost_of_opening_x < 0 
             (k1...k2).each{|i|
-            #(k1...k2).all{|i|
                 close_center = work_mem[gl_lower + @center_table[points.p[i].assign]] > 0 
                 if  @switch_membership[i] or close_center 
                     points.p[i].cost = points.p[i].weight * dist(points.p[i], points.p[x], points.dim)
@@ -385,7 +365,6 @@ class Streamcluster < Benchmark
             }
             
             (k1...k2).each{|i|
-            #(k1...k2).all{|i|
                 if @is_center[i] and work_mem[gl_lower + @center_table[i]] > 0 
                     @is_center[i] = false
                 end
@@ -394,13 +373,9 @@ class Streamcluster < Benchmark
                 @is_center[x] = true
             end
 
-            #if  pid==0 
             @numcenters = @numcenters + 1 - gl_number_of_centers_to_close
-            #end
         else 
-            #if pid==0 
             gl_cost_of_opening_x = 0  
-            #end
         end
         return -gl_cost_of_opening_x
        
@@ -420,22 +395,12 @@ class Streamcluster < Benchmark
             change = 0.0;
             numberOfPoints = points.num;
 
-            #feasible.shuffle!
             (0...iter).each{|i|
               x = i % numfeasible
               change += pgain(feasible[x], points, z)
             }
             cost -= change;
-            
-            # r = Reduction.new(Reduction::ADD)
-            # (0...iter).all{|i|
-            #     x = i % numfeasible
-            #     #print "pgain=", pgain(feasible[x], points, z)
-            #     # change += pgain(feasible[x], points, z)
-            #     r.push(pgain(feasible[x], points, z))
-            # }
-            # change = r.get
-            # cost -= change;
+
         end
         return cost
     end
@@ -448,7 +413,6 @@ class Streamcluster < Benchmark
         end
         
         numfeasible.times{feasible.push(0)}
-        #feasible = Array.new(numfeasible, 0)
 
         accumweight = Array.new
         k1 = 0;
@@ -471,9 +435,7 @@ class Streamcluster < Benchmark
         }
         totalweight=accumweight[points.num-1];
         
-        #rd = Random.new
         (k1...k2).each { |i|
-            ####w = rd.rand(0...65536)/Float(65536)*totalweight;
             w = (k2-i)*1.0/k2
             l = 0
             r = points.num-1;
@@ -508,11 +470,8 @@ class Streamcluster < Benchmark
         k1 = 0
         k2 = points.num
 
-        #myhiz = 0
         r = Reduction.new(Reduction::ADD)
-        #(k1...k2).each{ |kk|
         (k1...k2).all{ |kk|
-            # myhiz += dist(points.p[kk], points.p[0], ptDimension) * points.p[kk].weight
             r.push(dist(points.p[kk], points.p[0], ptDimension) * points.p[kk].weight)
         }
         hiz = r.get;
@@ -522,7 +481,6 @@ class Streamcluster < Benchmark
         #/* NEW: Check whether more centers than points! */
         if points.num <= kmax
             #/* just return all points as facilities */
-            #(k1...k2).each{ |kk|
             (k1...k2).all{ |kk|
                 points.p[kk].assign = kk
                 points.p[kk].cost = 0.0
@@ -532,10 +490,8 @@ class Streamcluster < Benchmark
             return cost
         end
 
-        #points.p.shuffle!
         cost = pspeedy(points, z)
-        
-        
+       
         i=0;
         #/* give speedy SP chances to get at least kmin/2 facilities */
         while (@numcenters < kmin) and (i < @SP)
@@ -550,8 +506,6 @@ class Streamcluster < Benchmark
                 z= ( hiz + loz ) /2.0
                 i=0
             end
-            #points.p.shuffle!
-            #print @numcenters,",", kmin, ",", z ,"\n"
             cost = pspeedy(points, z)
             i += 1
         end
@@ -701,37 +655,6 @@ class Streamcluster < Benchmark
             @centers.p[i].weight = 1.0
         }
         
-=begin
-        while true
-            
-            numRead  = stream.read(points, @dim, @chunksize) 
-            
-            if stream.ferror or (numRead < @chunksize and (not stream.feof)) 
-                puts sprintf("error reading data!\n")
-                exit
-            end
-
-            points.num = numRead;
-            @switch_membership = Array.new(points.num, false)
-            @is_center = Array.new(points.num, false)
-            @center_table = Array.new(points.num, 0)
-
-            localSearch(points,kmin, kmax)
-            
-            
-            #puts "local search finished"
-            contcenters(points)
-            if  @kfinal + @centers.num > @clustersize
-                puts "oops! no more space for centers\n"
-                exit
-            end
-            #print @centerIDs, iDoffset, "\n"
-            copycenters(points, @centers, @centerIDs, iDoffset)
-            iDoffset += numRead;
-
-            break if  stream.feof
-        end
-=end
         iDoffset = 0
         stage1 = lambda { |points|
           puts "feed: " + points.num.to_s
@@ -744,10 +667,6 @@ class Streamcluster < Benchmark
             
             puts "local search finished"
             contcenters(points)
-            # if  @kfinal + @centers.num > @clustersize
-            #     puts "oops! no more space for centers\n"
-            #     exit
-            # end
             return points
         }
         
@@ -776,7 +695,6 @@ end
 th_num = ARGV[0]
 ParLib.init(th_num.to_i)
 
-#RACE::Detector.start
 #2 5 1 10 10 5 none output.txt
 #thread_num, kmin, kmax, dim, n, chunksize, clustersize, input, output
 #printf(stderr,"usage: %s k1 k2 d n chunksize clustersize infile outfile nproc\n",

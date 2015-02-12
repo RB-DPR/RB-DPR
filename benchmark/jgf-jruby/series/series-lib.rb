@@ -94,17 +94,17 @@ class Series < Benchmark
     def start
         @TestArray[0][0] = TrapezoidIntegrate(0.0, 2.0, 1000, 0.0, 0) / 2.0
         @TestArray[1][0] = 0.0 
-        
+
         omega = 3.1415926535897932
         ilow = 1
         iupper = @array_rows
-        
         (ilow...iupper).all{|i|
             @TestArray[0][i] = TrapezoidIntegrate(0.0, 2.0, 1000, omega * i, 1)
             @TestArray[1][i] = TrapezoidIntegrate(0.0, 2.0, 1000, omega * i, 2)
         }
-	
-        #validation
+
+        # validation
+		# Validation may fail due to random number generation and floating-point calculation
         for i in 0...4 
             for j in 0...2 
                 error = @TestArray[j][i] - @ref[i][j]

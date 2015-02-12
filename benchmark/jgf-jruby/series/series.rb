@@ -99,6 +99,7 @@ class Series < Benchmark
         end
         
         #validation
+		# Validation may fail due to random number generation and floating-point calculation
         for i in 0...4 
             for j in 0...2 
                 error = @TestArray[j][i] - @ref[i][j]

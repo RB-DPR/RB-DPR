@@ -10,7 +10,7 @@
     <properties>
         <exam.version>3.0.3</exam.version>
         <url.version>1.5.2</url.version>
-        <logback.version>1.0.13</logback.version>
+        <logback.version>1.2.0</logback.version>
         <main.basedir>${project.parent.parent.basedir}</main.basedir>
     </properties>
 
